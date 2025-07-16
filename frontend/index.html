@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>মানসিক মূল্যায়ন চ্যাটবট</title>
+</head>
+<body>
+    <h1>বাংলা বিষণ্নতা চ্যাটবট</h1>
+    <form method="post" action="/chat">
+        <label>মডেল বাছাই করুন:</label>
+        <select name="model">
+            <option value="mistral">Mistral</option>
+            <option value="gemini">Gemini</option>
+            <option value="llama">LLaMA</option>
+            <option value="deepseek">DeepSeek</option>
+        </select><br><br>
+        <textarea name="user_input" rows="4" cols="60" placeholder="আপনার অনুভূতি লিখুন..."></textarea><br>
+        <button type="submit">পাঠান</button>
+    </form>
+
+    {% if chat %}
+    <div>
+        <h3>আলোচনা:</h3>
+        {% for user, bot in chat %}
+            <p><b>আপনি:</b> {{ user }}</p>
+            <p><b>চ্যাটবট:</b> {{ bot }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>
